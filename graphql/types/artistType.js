@@ -1,20 +1,17 @@
 const { GraphQLObjectType, GraphQLID, GraphQLString, GraphQLInt } = require("graphql");
 
-const songType = new GraphQLObjectType({
-    name: "Song", 
+const artistType = new GraphQLObjectType({
+    name: "Artist", 
     fields: {
         id: {
             type: GraphQLID,
         },
-        title: {
+        name: {
             type: GraphQLString
         },
-        genre: {
-            type: GraphQLString
-        },
-        year: {
+        followers: {
             type: GraphQLInt
         }
     }
 }) 
-module.exports = songType
+module.exports = artistType
