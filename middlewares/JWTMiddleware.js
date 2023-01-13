@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
-const JWT_KEY = "1158659639IFIUHSDIUSDF";
+require('dotenv').config({ path: './config/jwt.env' });
+JWT_KEY = process.env.SECRET;
 
 const JWTMiddleware = (request, response, next) => {
   const authorization = request.headers.authorization;
