@@ -12,10 +12,6 @@ module.exports = (sequelize, DataTypes) => {
             models.Song.belongsTo(models.Artist, {
                 foreignKey: 'artistId',
             });
-            models.Song.belongsToMany(models.Playlist, {
-                through: models.PlaylistSong,
-                foreignKey: 'songId',
-            });
         }
     }
     Song.init({
@@ -24,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
         year: DataTypes.INTEGER,
     }, {
         sequelize,
+        tableName: 'songs',
         modelName: 'Song',
     });
     return Song;

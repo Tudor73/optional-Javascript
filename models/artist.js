@@ -9,15 +9,15 @@ module.exports = (sequelize, DataTypes) => {
          * The `models/index` file will call this method automatically.
          */
         static associate(models) {
-            models.Artist.belongsToMany(models.Song, {
-                through: models.ArtistSong,
-                foreignKey: 'artistId'
-            });
             models.Artist.belongsToMany(models.User, {
                 through: models.UserArtist,
-                foreignKey: 'artistId'
-
-            })
+                foreignKey: 'artistId',
+                onDelete: 'CASCADE'
+            });
+            models.Artist.hasMany(models.Song, {
+                foreignKey: 'artistId',
+                onDelete: 'CASCADE'
+            });
         }
     }
     Artist.init({
@@ -25,6 +25,7 @@ module.exports = (sequelize, DataTypes) => {
         followers: DataTypes.INTEGER,
     }, {
         sequelize,
+        tableName: 'artists',
         modelName: 'Artist',
     });
     return Artist;

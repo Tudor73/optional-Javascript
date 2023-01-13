@@ -9,10 +9,10 @@ module.exports = (sequelize, DataTypes) => {
          * The `models/index` file will call this method automatically.
          */
         static associate(models) {
-            models.User.hasMany(models.Playlist);
             models.User.belongsToMany(models.Artist, {
-                through: ArtistUser,
-                foreignKey: 'userId'
+                through: models.UserArtist,
+                foreignKey: 'userId',
+                onDelete: 'CASCADE'
             })
         }
     }
@@ -20,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
         username: DataTypes.STRING,
     }, {
         sequelize,
+        tableName: 'users',
         modelName: 'User',
     });
     return User;
