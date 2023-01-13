@@ -2,7 +2,6 @@ const express = require("express");
 
 app.use(express.json());
 
-app.listen(5000);
 
 const JWTMiddleware = require('./middlewares/JWTMiddleware');
 const app = express();
