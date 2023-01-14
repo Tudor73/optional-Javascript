@@ -7,3 +7,4 @@ const schema = new GraphQLSchema({
     mutation: mutationType
 })
 module.exports = schema
+
