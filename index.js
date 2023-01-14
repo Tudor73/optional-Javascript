@@ -1,8 +1,5 @@
 const express = require("express");
 
-app.use(express.json());
-
-
 const JWTMiddleware = require('./middlewares/JWTMiddleware');
 const schema = require("./graphql")
 const { graphqlHTTP } = require('express-graphql');
