@@ -1,6 +1,6 @@
 const { GraphQLNonNull, GraphQLString, GraphQLInt } = require("graphql");
-const artistType = require("../types/artistType");
-const createArtistResolver = require('../resolvers/createArtistResolver');
+const artistType = require("../../types/artistType");
+const createArtistResolver = require('../../resolvers/artist/createArtistResolver');
 
 
 module.exports = {
@@ -10,7 +10,8 @@ module.exports = {
             type: new GraphQLNonNull(GraphQLString),
         },
         followers: {
-            type: new GraphQLNonNull(GraphQLInt),
+            type: GraphQLInt,
+            defaultValue: 0
         },
     },
     resolve: createArtistResolver,

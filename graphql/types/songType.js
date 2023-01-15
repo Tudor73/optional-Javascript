@@ -4,7 +4,7 @@ const songType = new GraphQLObjectType({
     name: "Song", 
     fields: {
         id: {
-            type: GraphQLID,
+            type: GraphQLID
         },
         title: {
             type: GraphQLString

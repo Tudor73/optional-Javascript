@@ -1,4 +1,4 @@
-const models = require("../../models");
+const models = require("../../../models");
 
 module.exports = async (source, { name, followers }, { tokenPayload }) => {
     console.log(tokenPayload)
