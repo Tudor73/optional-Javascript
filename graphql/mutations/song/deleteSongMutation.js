@@ -1,6 +1,6 @@
 const { GraphQLBoolean, GraphQLNonNull, GraphQLID } = require("graphql");
 
-const deleteArtistResolver = require('../resolvers/deleteArtistResolver');
+const deleteSongResolver = require('../../resolvers/song/deleteSongResolver');
 
 module.exports = {
     type: GraphQLBoolean,
@@ -9,5 +9,5 @@ module.exports = {
             type: new GraphQLNonNull(GraphQLID),
         },
     },
-    resolve: deleteArtistResolver,
+    resolve: deleteSongResolver,
 };

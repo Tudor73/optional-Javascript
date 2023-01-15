@@ -8,7 +8,7 @@ module.exports = async (source, args) => {
 
     const user = await models.User.findOne({
         where: {
-            username,
+            username: username,
         }
     });
 
