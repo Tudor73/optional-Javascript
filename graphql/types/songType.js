@@ -1,5 +1,6 @@
-const { GraphQLObjectType, GraphQLID, GraphQLString, GraphQLInt } = require("graphql");
-
+const { GraphQLObjectType, GraphQLID, GraphQLString, GraphQLInt, GraphQLNonNull } = require("graphql");
+const artistType = require("./artistType");
+const models = require("../../models")
 const songType = new GraphQLObjectType({
     name: "Song", 
     fields: {
@@ -14,6 +15,15 @@ const songType = new GraphQLObjectType({
         },
         year: {
             type: GraphQLInt
+        },
+        artistId: {
+            type: new GraphQLNonNull(GraphQLInt)
+        },
+        artist: { 
+            type: artistType,
+            resolve: (song) => {
+                return models.Artist.findByPk(song.artistId) 
+            }
         }
     }
 }) 
