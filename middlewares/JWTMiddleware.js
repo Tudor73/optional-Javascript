@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 
 const JWTMiddleware = (request, response, next) => {
+    const headers = request.headers;
     const authorization = request.headers.authorization;
     if (!authorization) {
         next();
@@ -14,7 +15,9 @@ const JWTMiddleware = (request, response, next) => {
         request.tokenPayload = tokenPayload;
         next();
     } catch (e) {
-        next();
+        response.status(403).send({
+            message: 'Unauthorized',
+        });
         return;
     }
 }

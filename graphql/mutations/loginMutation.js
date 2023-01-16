@@ -10,7 +10,7 @@ module.exports = {
         },
         password: {
             type: new GraphQLNonNull(GraphQLString),
-        },
+        }
     },
     resolve: loginResolver,
 }
