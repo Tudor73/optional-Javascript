@@ -4,6 +4,7 @@ const artistType = new GraphQLObjectType({
   name: "Artist",
   fields: () => {
     const songType = require("./songType");
+    const userArtistType = require("./userArtistType");
     const models = require("../../models");
     return {
       id: {
@@ -13,7 +14,14 @@ const artistType = new GraphQLObjectType({
         type: GraphQLString,
       },
       followers: {
-        type: GraphQLInt,
+        type: new GraphQLList(userArtistType),
+        resolve: (artist) => {
+          return models.UserArtist.findAll({
+            where: {
+              artistId: artist.id,
+            },
+          });
+        },
       },
       songs: {
         type: new GraphQLList(songType),

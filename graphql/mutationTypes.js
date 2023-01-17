@@ -8,6 +8,7 @@ const updateArtistMutation = require('./mutations/artist/updateArtistMutation');
 const createSongMutation = require('./mutations/song/createSongMutation');
 const deleteSongMutation = require('./mutations/song/deleteSongMutation');
 const updateSongMutation = require('./mutations/song/updateSongMutation');
+const createUserArtistMutation = require('./mutations/createUserArtistMutation');
 
 const mutationType = new GraphQLObjectType({
     name: 'Mutation',
@@ -22,7 +23,7 @@ const mutationType = new GraphQLObjectType({
         updateSong: updateSongMutation,
         deleteSong: deleteSongMutation,
 
-
+        createUserArtist: createUserArtistMutation,
         login: loginMutation,
     }
 });

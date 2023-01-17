@@ -6,11 +6,11 @@ const ROUNDS = 7
 
 module.exports = async (source, { username, password }, {tokenPayload}) => {
 
-    if (tokenPayload) {
-        if (tokenPayload.roleId !== '1') {
-            return null  // user is an artist
-        }
-    }
+    // if (tokenPayload) {
+    //     if (tokenPayload.roleId !== '1') {
+    //         return null  // user is an artist
+    //     }
+    // }
 
     const userExists = await models.User.findOne({
         where: {
@@ -18,7 +18,7 @@ module.exports = async (source, { username, password }, {tokenPayload}) => {
         }
     });
     if(userExists){
-        //TODO
+        return "User already exist"
     }
 
     password = await bcrypt.hash(password, ROUNDS);
@@ -31,7 +31,7 @@ module.exports = async (source, { username, password }, {tokenPayload}) => {
         roleId
     })
     
-    const token = jwt.sign({ userId: user.id, role: ROLE.USER }, JWT_SECRET);
+    // const token = jwt.sign({ userId: user.id, role: ROLE.USER }, JWT_SECRET);
 
-    return {token};
+    return await user;
 }
